@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
+import FriendForm from "./components/FriendForm";
 import PrivateRoute from './components/PrivateRoute';
 import styled from 'styled-components'
 
@@ -29,10 +30,13 @@ function App() {
           <li>
             <Link style = {{color:'red', textDecoration:'none'}} to="/protected">Friends Page</Link>
           </li>
+          <li>
+            <Link style = {{color:'red', textDecoration:'none'}} to="/form">Add Friend</Link>
+          </li>
         </UList>
         <Route   path="/login" component={Login} />
         <PrivateRoute exact path="/protected" component={FriendsList} />
-        
+        <Route path= "/form" component = {FriendForm}/>
       </div>
     </Router>
   );
