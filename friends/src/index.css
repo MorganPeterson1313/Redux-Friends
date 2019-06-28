@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url(); */
+  background-image: url(https://www.shutterfly.com/ideas/wp-content/uploads/2019/02/bff-captions.jpg);
+  background-size: cover;
+
 }
 
 code {

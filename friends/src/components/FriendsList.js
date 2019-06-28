@@ -1,12 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getData } from "../actions";
+import { getData, deleteFriend } from "../actions";
 import Friend from "./Friend";
-
 
 class FriendsList extends React.Component {
   componentDidMount() {
     this.props.getData();
+
+    this.deleteFriend = e => {
+       
+  const friend = this.props.friends;
+  this.props.deleteFriend(friend);
+
+    }
+
+
   }
   render() {
     console.log("friendslist log:", this.props.friends);
@@ -15,12 +23,24 @@ class FriendsList extends React.Component {
       <div>
         {this.props.friends.map(friend => {
           return (
-            <div>
+            <div
+              style={{
+                bacgroundColor: "rgba(0, 0, 100%, 80%)",
+                border: "solid 2px red ",
+                margin: "5%",
+                width: "400px",
+                height: "200px",
+                marginLeft: '35%'
+                
+
+
+              }}
+            >
               <Friend key={friend.id} friend={friend} />
+              <button onClick={()=> this.deleteFriend}>Delete</button>
             </div>
           );
         })}
-        
       </div>
     );
   }
@@ -33,5 +53,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getData }
+  { getData, deleteFriend }
 )(FriendsList);

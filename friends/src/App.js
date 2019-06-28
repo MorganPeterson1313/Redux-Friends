@@ -22,7 +22,7 @@ width: 300px;
 function App() {
   return (
     <Router >
-      <div className="App">
+      <div  className="App">
         <UList>
           <li>
             <Link style = {{color:'red', textDecoration:'none'}} to="/login">Login</Link>

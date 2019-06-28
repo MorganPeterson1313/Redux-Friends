@@ -50,3 +50,21 @@ export const getFriend = (friend) => dispatch => {
           dispatch({ type: FETCH_FRIEND_FAILURE, payload: err.response.data.error });
         });
     };
+
+
+    export const DELETE_FRIEND_START = 'DELETE_FRIEND_START';
+export const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS';
+export const DELETE_FRIEND_FAILURE = 'DELETE_FRIEND_FAILURE';
+export const deleteFriend = (friend) => dispatch => {
+    dispatch({ type: DELETE_FRIEND_START });
+    authenticator()
+        .delete(`http://localhost:5000/api/friends/:id`, friend)
+        .then(res => { 
+            console.log("actions log :", res.data)
+     dispatch({ type: DELETE_FRIEND_SUCCESS, payload: res.data});
+        })
+        .catch(err => {
+          console.log(err.response);
+          dispatch({ type: DELETE_FRIEND_FAILURE, payload: err.response.data.error });
+        });
+    };

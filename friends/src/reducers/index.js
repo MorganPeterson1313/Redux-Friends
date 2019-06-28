@@ -7,7 +7,11 @@ import {
     FETCH_DATA_FAILURE,
     FETCH_FRIEND_START,
     FETCH_FRIEND_SUCCESS,
-    FETCH_FRIEND_FAILURE
+    FETCH_FRIEND_FAILURE,
+    DELETE_FRIEND_START,
+    DELETE_FRIEND_SUCCESS,
+    DELETE_FRIEND_FAILURE,
+
   
 }
 from '../actions';
@@ -77,6 +81,25 @@ const reducer = (state = initialState, action) => {
               savingFriend: false,
               error: action.payload
             };
+            case DELETE_FRIEND_START:
+              return {
+                ...state,
+                error: '',
+                deleteFriend: true
+              };
+            case DELETE_FRIEND_SUCCESS:
+              return {
+                ...state,
+                deleteFriend: false,
+                friends: action.payload,
+                error: ''
+              };
+              case DELETE_FRIEND_FAILURE:
+                return {
+                  ...state,
+                  deleteFriend: false,
+                  error: action.payload
+                };
         default:
             return state;
         }

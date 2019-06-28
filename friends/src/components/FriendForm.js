@@ -10,7 +10,8 @@ class FriendForm extends Component {
       id: null,
       age:'',
       email:'',
-      savingFriend: false
+      savingFriend: false,
+      deleteFriend: false
     };
   }
 
@@ -19,7 +20,7 @@ class FriendForm extends Component {
 //     event.preventDefault();
 componentDidMount() {
     this.addFriend = e => {
-        //    e.preventDefault();
+          // e.preventDefault;
     const friend = this.state;
     this.props.getFriend(friend);
   }
