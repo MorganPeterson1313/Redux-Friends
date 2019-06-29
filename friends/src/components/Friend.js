@@ -1,6 +1,7 @@
 import React from "react";
 
 const Friend = props => {
+  console.log("log from friend", props)
   return <div style ={{color:'red', fontSize: '30px'}} >
 
                 <section>

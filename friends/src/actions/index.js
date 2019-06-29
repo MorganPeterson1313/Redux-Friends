@@ -41,8 +41,10 @@ export const getFriend = (friend) => dispatch => {
     dispatch({ type: FETCH_FRIEND_START });
     authenticator()
         .post("http://localhost:5000/api/friends", friend)
+        .get(`http://localhost:5000/api/friends/${friend.id}`)
+        .put(`http://localhost:5000/api/friends/${friend.id}`)
         .then(res => { 
-            console.log("actions log :", res.data)
+            console.log("actions log for adding a friend :", res.data)
      dispatch({ type: FETCH_FRIEND_SUCCESS, payload: res.data});
         })
         .catch(err => {
@@ -55,12 +57,14 @@ export const getFriend = (friend) => dispatch => {
     export const DELETE_FRIEND_START = 'DELETE_FRIEND_START';
 export const DELETE_FRIEND_SUCCESS = 'DELETE_FRIEND_SUCCESS';
 export const DELETE_FRIEND_FAILURE = 'DELETE_FRIEND_FAILURE';
-export const deleteFriend = (friend) => dispatch => {
+export const deleteFriend = (id) => dispatch => {
+  
     dispatch({ type: DELETE_FRIEND_START });
     authenticator()
-        .delete(`http://localhost:5000/api/friends/:id`, friend)
+        .delete(`http://localhost:5000/api/friends/${id}`)
         .then(res => { 
-            console.log("actions log :", res.data)
+            console.log("actions log :",res.data)
+            
      dispatch({ type: DELETE_FRIEND_SUCCESS, payload: res.data});
         })
         .catch(err => {

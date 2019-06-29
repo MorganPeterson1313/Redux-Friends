@@ -7,7 +7,7 @@ class FriendForm extends Component {
     super(props);
     this.state = {
       name: '',
-      id: null,
+      id: undefined,
       age:'',
       email:'',
       savingFriend: false,
@@ -66,7 +66,8 @@ componentDidMount() {
 
 const mapStateToProps = state => ({
   friends: state.friends,
-  fetchingData: state.fetchingData
+  fetchingData: state.fetchingData,
+  id: state.id
   });
   
   export default connect(

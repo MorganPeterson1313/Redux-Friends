@@ -6,18 +6,17 @@ import Friend from "./Friend";
 class FriendsList extends React.Component {
   componentDidMount() {
     this.props.getData();
+}
 
-    this.deleteFriend = e => {
-       
-  const friend = this.props.friends;
-  this.props.deleteFriend(friend);
+
+    deleteFriend = id => {
+    
+  this.props.deleteFriend(id);
 
     }
 
-
-  }
   render() {
-    console.log("friendslist log:", this.props.friends);
+    console.log("friendslist log for props:", this.props);
 
     return (
       <div>
@@ -25,7 +24,7 @@ class FriendsList extends React.Component {
           return (
             <div
               style={{
-                bacgroundColor: "rgba(0, 0, 100%, 80%)",
+                bacgroundColor: "rgba(0, 0, 0,.03)",
                 border: "solid 2px red ",
                 margin: "5%",
                 width: "400px",
@@ -37,7 +36,7 @@ class FriendsList extends React.Component {
               }}
             >
               <Friend key={friend.id} friend={friend} />
-              <button onClick={()=> this.deleteFriend}>Delete</button>
+              <button onClick={()=> this.deleteFriend(friend.id)}>Delete</button>
             </div>
           );
         })}
